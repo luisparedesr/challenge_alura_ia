@@ -1,5 +1,0 @@
-streamlit
-cohere
-langchain
-langchain-community
-pypdf
