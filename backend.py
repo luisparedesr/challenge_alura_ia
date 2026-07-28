@@ -26,12 +26,11 @@ def cargar_base_predeterminada():
     if "bloques_evento" in st.session_state and st.session_state.bloques_evento:
         return
 
-    # Obtiene la ruta de la carpeta raíz del proyecto
+    # Obtiene la carpeta actual donde se ejecuta este script .py
     ruta_actual = os.path.dirname(os.path.abspath(__file__))
-    ruta_raiz = os.path.dirname(ruta_actual)
 
-    # Ruta del PDF
-    ruta_pdf = os.path.join(ruta_raiz, "documento", "terminosycondiciones.pdf")
+    # Ruta directa a la carpeta 'documento'
+    ruta_pdf = os.path.join(ruta_actual, "documento", "terminosycondiciones.pdf")
 
     if os.path.exists(ruta_pdf):
         try:
@@ -45,9 +44,10 @@ def cargar_base_predeterminada():
 
         except Exception as e:
             st.session_state.nombre_evento = "Error al cargar documento"
-            st.error(f" Error al procesar el PDF: {e}")
+            st.error(f"Error al procesar el PDF: {e}")
     else:
         st.session_state.nombre_evento = "Documento no encontrado"
+        st.error(f"No se encontró el archivo en la ruta: {ruta_pdf}")
 
 
 def procesar_documento(ruta_archivo):
