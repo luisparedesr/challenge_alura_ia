@@ -27,11 +27,11 @@ def cargar_base_predeterminada():
         return
 
     # Obtiene la ruta de la carpeta raíz del proyecto
-        ruta_actual = os.path.dirname(os.path.abspath(__file__))
+    ruta_actual = os.path.dirname(os.path.abspath(__file__))
+    ruta_raiz = os.path.dirname(ruta_actual)
 
-        ruta_pdf = os.path.join(
-        ruta_actual,
-        "terminosycondiciones.pdf")
+    # Ruta del PDF
+    ruta_pdf = os.path.join(ruta_raiz, "documento", "terminosycondiciones.pdf")
 
     if os.path.exists(ruta_pdf):
         try:
